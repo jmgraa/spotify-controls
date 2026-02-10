@@ -279,6 +279,38 @@ export default class SpotifyControlsPrefs extends ExtensionPreferences {
 
         displayGroup.add(showTrackInfoSwitch);
 
+        /**
+         * MAXIMUM WIDTH SETTING
+         */
+        const maxWidthRow = new Adw.ActionRow({
+            title: _('Maximum Width (pixels)'),
+            subtitle: _('Limit how wide the extension label can be in the top bar (0 = no limit)'),
+        });
+
+        const maxWidthAdjustment = new Gtk.Adjustment({
+            lower: 0,
+            upper: 1000,
+            step_increment: 10,
+            page_increment: 50,
+        });
+
+        const maxWidthSpin = new Gtk.SpinButton({
+            adjustment: maxWidthAdjustment,
+            numeric: true,
+        });
+
+        settings.bind(
+            'max-width',
+            maxWidthSpin,
+            'value',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+
+        maxWidthRow.add_suffix(maxWidthSpin);
+        maxWidthRow.activatable_widget = maxWidthSpin;
+
+        displayGroup.add(maxWidthRow);
+
         // Add the display group to the page
         page.add(displayGroup);
 
