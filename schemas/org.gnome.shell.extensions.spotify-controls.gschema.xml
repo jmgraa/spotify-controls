@@ -62,5 +62,13 @@
         If un-toggled, clicking the extension again while Spotify is on top does nothing.
       </description>
     </key>
+    <key name="max-width" type="i">
+      <default>0</default>
+      <summary>Maximum width for the extension label</summary>
+      <description>
+        Sets the maximum width, in pixels, that the Spotify Controls label is allowed to occupy in the top bar.
+        A value of 0 or a negative value disables the limit and allows the label to take its natural width.
+      </description>
+    </key>
   </schema>
 </schemalist>
